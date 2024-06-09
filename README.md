@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-[Link demo](https://28yrv7-5173.csb.app/) 
+<a href="https://28yrv7-5173.csb.app/" target="_blank">Link demo</a>
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
