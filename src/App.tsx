@@ -17,7 +17,11 @@ import Joyride, { ACTIONS, CallBackProps } from "react-joyride";
 
 // const version = import.meta.env.PACKAGE_VERSION;
 
-const getAssetUrl = (file: string) => `${import.meta.env.BASE_URL}assets/${file}`;
+const baseUrl = import.meta.env.BASE_URL.startsWith("http")
+  ? new URL(import.meta.env.BASE_URL).pathname
+  : import.meta.env.BASE_URL;
+
+const getAssetUrl = (file: string) => `${baseUrl}assets/${file}`;
 const audioSrc = getAssetUrl("hbd2.mp3");
 
 const steps = [
