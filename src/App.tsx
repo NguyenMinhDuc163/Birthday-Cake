@@ -17,7 +17,8 @@ import Joyride, { ACTIONS, CallBackProps } from "react-joyride";
 
 // const version = import.meta.env.PACKAGE_VERSION;
 
-const src = new URL("/assets/hbd2.mp3", import.meta.url).href;
+const getAssetUrl = (file: string) => `${import.meta.env.BASE_URL}assets/${file}`;
+const audioSrc = getAssetUrl("hbd2.mp3");
 
 const steps = [
   {
@@ -72,7 +73,7 @@ const sharedSteps = [
 function App() {
   const [candleVisible, setCandleVisible] = useState(false);
 
-  const audioRef = useRef<HTMLAudioElement>(new Audio(src));
+  const audioRef = useRef<HTMLAudioElement>(new Audio(audioSrc));
   const microphoneStreamRef = useRef<MediaStream | undefined>(undefined);
 
   const [playing, setPlaying] = useState(false);
@@ -281,7 +282,7 @@ function App() {
         spotlightClicks
       />
 
-      <audio {...{ src, ref: audioRef, preload: "auto", onEnded }} />
+      <audio {...{ src: audioSrc, ref: audioRef, preload: "auto", onEnded }} />
 
       <div>
         <Name
@@ -307,7 +308,7 @@ function App() {
         }}
       >
         <dotlottie-player
-          src="/assets/hbd.lottie"
+          src={getAssetUrl("hbd.lottie")}
           autoplay
           loop
           style={{
@@ -327,7 +328,7 @@ function App() {
         }}
       >
         <dotlottie-player
-          src="/assets/confetti.lottie"
+          src={getAssetUrl("confetti.lottie")}
           autoplay
           loop
           style={{
